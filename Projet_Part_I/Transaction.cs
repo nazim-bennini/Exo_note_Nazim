@@ -41,8 +41,11 @@ namespace Projet_Part_I
                     int id_trans = int.Parse(number);
 
                     string balance = column_values[1].Replace('.', ',');
-                    float solde = float.Parse(balance);
+
+                    float solde;
+                    float.TryParse(balance, out solde);
                     // remplacer le . par , pour eviter des bug dans le traitement en windows francais
+                    // float solde = float.TryParse(balance); ne gere pas les exceptions de solde vide
 
                     string sender = column_values[2];
                     //int expediteur = int.Parse(sender);
@@ -66,12 +69,12 @@ namespace Projet_Part_I
 
         }
 
-        public static float retrait(id_trans, montant, )
-        { 
-        }
-        public static float depot(,)
-        {
-        }
+        //public static float retrait(id_trans, montant, )
+        //{ 
+        //}
+        //public static float depot(,)
+        //{
+        //}
     }
 }
 

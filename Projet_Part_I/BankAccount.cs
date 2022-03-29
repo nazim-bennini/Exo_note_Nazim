@@ -12,7 +12,7 @@ namespace Projet_Part_I
 
         public string Number { get; set; }
         public float Balance { get; set; }
-        
+
         public BankAccount(string number, float balance)    //constructeur
         {
             Number = number;
@@ -22,7 +22,7 @@ namespace Projet_Part_I
 
         public static List<BankAccount> ReadAccounts(string acctPath)
         {
-            List <BankAccount> data_fic_comptes = new List<BankAccount>();
+            List<BankAccount> data_fic_comptes = new List<BankAccount>();
             using (StreamReader streamReader = new StreamReader(acctPath))
             {
                 while (!streamReader.EndOfStream)
@@ -34,10 +34,11 @@ namespace Projet_Part_I
                     int numero = int.Parse(number);
 
                     string balance = column_values[1].Replace('.', ',');
-                    float solde = float.Parse(balance);
+                    float solde;
+                    float.TryParse(balance, out solde);
                     // remplacer le . par , pour eviter des bug dans le traitement en windows francais
 
-                    BankAccount x = new BankAccount(number,solde);
+                    BankAccount x = new BankAccount(number, solde);
                     //BankAccount x = new BankAccount(column_values[0],column_values[1]);
 
                     data_fic_comptes.Add(x);

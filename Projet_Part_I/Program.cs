@@ -16,7 +16,11 @@ namespace Projet_Part_I
             string trxnPath = path + @"\Transactions_1.txt";
             string sttsPath = path + @"\Statut_1.txt";
 
-            BankAccount.ReadAccounts(acctPath);
+            List<BankAccount> lst = BankAccount.ReadAccounts(acctPath);
+            foreach (BankAccount bankAccount in lst)
+            {
+                Console.WriteLine($"{bankAccount.Number} - {bankAccount.Balance}€");
+            }
 
             Transactions.ReadTransactions(trxnPath);
 
@@ -27,7 +31,7 @@ namespace Projet_Part_I
             Console.ReadKey();
         }
 
-        
-        
+
+
     }
 }
