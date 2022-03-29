@@ -16,11 +16,18 @@ namespace Projet_Part_I
             string trxnPath = path + @"\Transactions_1.txt";
             string sttsPath = path + @"\Statut_1.txt";
 
-            //TODO: Votre implémentation
+            BankAccount.ReadAccounts(acctPath);
 
+            Transactions.ReadTransactions(trxnPath);
+
+            //TODO: Votre implémentation
+            BankAccount.ReadAccounts(acctPath);
             // Keep the console window open
             Console.WriteLine("Press any key to exit.");
             Console.ReadKey();
         }
+
+        
+        
     }
 }
