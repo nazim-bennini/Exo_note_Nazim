@@ -35,11 +35,19 @@ namespace Percolation
         {
             if (!IsOpen)
             {
-                throw new NotImplementedException($"la case {i}, {j} est de la roche");
+                if (i < 0 || j<0 || i>= _size || j>= _size)
+                {
+                    throw new NotImplementedException($"la case {i}, {j} est hors de la grille");    
+                }
+                else
+                {
+                    return false
+                }
+                    
             }
             else
             {
-                if (i==1)
+                if ((i==1) && (IsOpen))
                 {
                     return true;
                 }
