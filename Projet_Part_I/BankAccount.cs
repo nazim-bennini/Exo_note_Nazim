@@ -20,7 +20,7 @@ namespace Projet_Part_I
         }
 
 
-        public static List<BankAccount> ReadAccounts(string acctPath)
+        public static List<BankAccount> ReadAccounts(string acctPath)             // etait en static mais il ne vaut mieux pas
         {
             List<BankAccount> data_fic_comptes = new List<BankAccount>();
             using (StreamReader streamReader = new StreamReader(acctPath))
@@ -38,7 +38,7 @@ namespace Projet_Part_I
                     float.TryParse(balance, out solde);
                     // remplacer le . par , pour eviter des bug dans le traitement en windows francais
 
-                    BankAccount x = new BankAccount(number, solde);
+                    BankAccount x = new BankAccount(number, solde);    // number parce que en string contrairement a numero int
                     //BankAccount x = new BankAccount(column_values[0],column_values[1]);
 
                     data_fic_comptes.Add(x);
@@ -48,8 +48,8 @@ namespace Projet_Part_I
                 streamReader.Dispose();
             }
 
-            return data_fic_comptes;
-        }
+            return data_fic_comptes;          // List<BankAccount> ReadAccounts va retourner ce qui est ici.
+        }                                     // faire appel a cette fonction veut dire avoir data_fic_comptes en sortie 
 
     }
 
