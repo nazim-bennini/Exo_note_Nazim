@@ -36,8 +36,10 @@ namespace Projet_Part_I
 
                 if ()
                 {
-                    Transactions.retrait
+                    Transactions.retrait(BankAccount.id_trans, int montant, string expediteur, string destinataire)
                         BankAccount.Balance = solde - montant
+                        BankAccount var = new BankAccount(a, b);
+
                 }
 
                 if ()
