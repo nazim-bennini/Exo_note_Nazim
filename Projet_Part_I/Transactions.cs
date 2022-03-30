@@ -82,63 +82,64 @@ namespace Projet_Part_I
 
            public bool retrait(int id_trans, int montant, string expediteur, string destinataire)
            {
-               double amount = montant;
-               bool status = false;    // statut par defaut
+                    double amount = montant;
+                    bool status = false;                                            // statut par defaut
 
-               if (solde >= montant && MaxRetrait <= 1000)                     // solde(expediteur)
-               {
-                   status = true;
-                   return status;
-               }
-               else
-               {
-                   throw new Exception("virement impossible, car limite depassé");
+                    if (solde >= montant && MaxRetrait <= 1000)                     // solde(expediteur)
+                    {
 
-                   return status;
-               }
+                       status = true;
+                       return status;
+                    }
+                    else
+                    {
+                        throw new Exception("virement impossible, car limite depassé");
+
+                        return status;
+                    }
            }
+
            public bool depot(id_trans, montant, expediteur, destinataire)
            {
-               double amount = montant;
-
+                    double amount = montant;
            }
 
            public bool virement(id_trans, montant, expediteur, destinataire)
            {
-               string chemin =
-               List<BankAccount> nomVariable = BankAccount.ReadAccounts(chemin);
+                    string chemin =
+                    List<BankAccount> nomVariable = BankAccount.ReadAccounts(chemin);
 
-               double amount = montant;
-               bool status = false;    // statut par defaut
+                    double amount = montant;
+                    bool status = false;                                             // statut par defaut
 
-               if (MaxRetrait <= 1000)
-               {
-                   status = true;
-                   return status;
-               }
-               else
-               {
-                   throw new Exception("virement impossible, car limite depassé");
+                    if (MaxRetrait <= 1000)
+                    {
+                        status = true;
+                        return status;
+                    }
+                    else
+                    {
+                        throw new Exception("virement impossible, car limite depassé");
 
-                   return status;
-               }
+                        return status;
+                    }
            }
 
            public bool prelevement(id_trans, montant, expediteur, destinataire)
            {
-               double amount = montant;
-               bool status = false;    // statut par defaut
+                    double amount = montant;
+                    bool status = false;    // statut par defaut
 
-               if (virement(id_trans, montant, expediteur, destinataire))
-               {
-                   Console.WriteLine($"prelevement autorisé du compte {expediteur} vers le compte {destinataire}");
-                   status = true;
-               }
-               else
-               {
-                   Console.WriteLine($"prelevement autorisé du compte {expediteur} vers le compte {destinataire}");            // throw new Exception("prelevement impossible, car virement a partir du compte non-autorisé");
-               }
-               return status;
+                    if (virement(id_trans, montant, expediteur, destinataire))
+                    {
+                        Console.WriteLine($"prelevement autorisé du compte {expediteur} vers le compte {destinataire}");
+                        status = true;
+                    }
+                    else
+                    {
+                        Console.WriteLine($"prelevement autorisé du compte {expediteur} vers le compte {destinataire}");            // throw new Exception("prelevement impossible, car virement a partir du compte non-autorisé");
+                    }
+                    return status;
            }
            
     }

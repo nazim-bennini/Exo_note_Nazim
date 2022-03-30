@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using Class BankAccount;
+
 namespace Projet_Part_I
 {
     class Program
@@ -30,8 +32,35 @@ namespace Projet_Part_I
             foreach (Transactions transaction in lst_tr)
             {
                 Console.WriteLine($"{transaction.Id} - montant {transaction.Montant} - origine {transaction.Sender} - destination {transaction.Receiver}");
+                Transactions.retrait;
+
+                if ()
+                {
+                    Transactions.retrait
+                        BankAccount.Balance = solde - montant
+                }
+
+                if ()
+                {
+                    Transactions.depot
+                }
+
+                if ()
+                {
+                    Transactions.prelevement
+                }
+
+                if ()
+                {
+                    Transactions.virement
+                }
             }
 
+
+            foreach (line in data_fic_transactions)
+            {
+                
+            }
             //Transactions.ReadTransactions(trxnPath);
 
             //TODO: Votre implémentation

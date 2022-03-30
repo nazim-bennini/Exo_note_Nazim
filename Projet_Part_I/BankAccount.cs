@@ -52,7 +52,6 @@ namespace Projet_Part_I
         }                                     // faire appel a cette fonction veut dire avoir data_fic_comptes en sortie 
 
     }
-
 }
 
 //***************************************************************************************************************
