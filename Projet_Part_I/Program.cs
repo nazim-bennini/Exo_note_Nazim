@@ -19,24 +19,29 @@ namespace Projet_Part_I
             string sttsPath = path + @"\Statut_1.txt";
 
             // visualisation de mes data de comptes
-            List<BankAccount> lst = BankAccount.ReadAccounts(acctPath);
+            List<BankAccount> list = BankAccount.ReadAccounts(acctPath);
 
-            foreach (BankAccount bankAccount in lst)
+            foreach (BankAccount bankAccount in list)
             {
                 Console.WriteLine($"{bankAccount.Number} - {bankAccount.Balance}€");
             }
 
             //visualisation de mes data de transactions
-            List<Transactions> lst_tr = Transactions.ReadTransactions(trxnPath);
+            List<Transactions> list_tr = Transactions.ReadTransactions(trxnPath);
 
-            foreach (Transactions transaction in lst_tr)
+
+            foreach (Transactions transaction in list_tr)
             {
                 Console.WriteLine($"{transaction.Id} - montant {transaction.Montant} - origine {transaction.Sender} - destination {transaction.Receiver}");
+
+                switch 
+
                 Transactions.retrait;
 
-                if ()
+                /*
+                if (transaction.Receiver == '0' )
                 {
-                    Transactions.retrait(BankAccount.id_trans, int montant, string expediteur, string destinataire)
+                    Transactions.retrait(Transactions.id_trans, Transactions.montant, string expediteur, string destinataire)
                         BankAccount.Balance = solde - montant
                         BankAccount var = new BankAccount(a, b);
 
@@ -56,6 +61,7 @@ namespace Projet_Part_I
                 {
                     Transactions.virement
                 }
+                */
             }
 
 

@@ -15,13 +15,13 @@ namespace Projet_Part_I
         public string Receiver { get; set; }
         public float MaxRetrait { get; }
 
-        static int id_trans;              // inutile sauf pour faire marcher ma fonction lecture de Transactions
-        
-        string expediteur;                // static string expediteur;
-        string destinataire;              // static string destinataire;
+        public static int id_trans;              // inutile sauf pour faire marcher ma fonction lecture de Transactions
+        public  float amount;
+        string expediteur;                  // static string expediteur;
+        string destinataire;                // static string destinataire;
 
-        //string path = Directory.GetCurrentDirectory();
-        //string trxnPath = path + @"\Transactions_1.txt";
+            //string path = Directory.GetCurrentDirectory();
+            //string trxnPath = path + @"\Transactions_1.txt";
 
         public Transactions(string id, float montant, string sender, string receiver)  //constructeur
         {
@@ -78,7 +78,7 @@ namespace Projet_Part_I
         List<Transactions> recup_trans = BankAccount.data_fic_comptes;
         */  // a revoir si jamais
 
-
+        // LA SUITE A DEPLACER AILLEURS
 
            public bool retrait(int id_trans, int montant, string expediteur, string destinataire)
            {
