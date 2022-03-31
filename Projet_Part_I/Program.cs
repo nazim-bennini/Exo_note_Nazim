@@ -72,7 +72,7 @@ namespace Projet_Part_I
             }
 
             Transactions x = new Transactions("",10,"","");
-            x.retrait(1, 0, "", "", Mylist);
+            x.retrait(1, 0, "", "", Mylist, );
 
 
                 /*

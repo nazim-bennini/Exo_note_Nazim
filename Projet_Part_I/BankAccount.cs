@@ -20,6 +20,7 @@ namespace Projet_Part_I
         }
 
 
+
         public static List<BankAccount> ReadAccounts(string acctPath)             // etait en static mais il ne vaut mieux pas
         {
             List<BankAccount> data_fic_comptes = new List<BankAccount>();

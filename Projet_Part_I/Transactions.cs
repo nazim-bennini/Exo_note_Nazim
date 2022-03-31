@@ -83,10 +83,12 @@ namespace Projet_Part_I
 
         // LA SUITE A DEPLACER AILLEURS
 
-        public bool retrait(int id_trans, int montant, string expediteur, string destinataire, List<BankAccount> aupif)
+        public bool retrait(int id_trans, int montant, string expediteur, string destinataire, List<BankAccount> aupif, BankAccount c)
         {
             double amount = montant;
             bool status = false;                                            // statut par defaut
+
+            c.Balance = c.Balance + montant;
 
             foreach (BankAccount item in aupif)
             {
