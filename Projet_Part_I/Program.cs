@@ -16,8 +16,8 @@ namespace Projet_Part_I
             string trxnPath = path + @"\Transactions_1.txt";
             string sttsPath = path + @"\Statut_1.txt";
 
-
-            // visualisation de mes data de comptes
+        /****************************************************************************/
+        // visualisation (sur console) et ecriture (foreach) de mes data de comptes
             List<BankAccount> Mylist = BankAccount.ReadAccounts(acctPath);
 
             foreach (BankAccount bankAccount in Mylist)
@@ -25,7 +25,13 @@ namespace Projet_Part_I
                 Console.WriteLine($"{bankAccount.Number} - {bankAccount.Balance} euros");
             }
 
-            //visualisation de mes data de transactions
+            Console.WriteLine("");
+            //--------------------------------------------------------------------------//
+            // visualisation (sur console) et ecriture (foreach) de mes data de comptes
+
+
+        /****************************************************************************/
+        //visualisation (sur console) et traitement de mes data de transactions
             List<Transactions> list_tr = Transactions.ReadTransactions(trxnPath);
 
 
@@ -50,6 +56,7 @@ namespace Projet_Part_I
                             {
                                 if (Mylist[i].Number == transaction.Receiver)
                                 {
+                                    Console.WriteLine("");
                                     Console.WriteLine($"transaction Id {transaction.Id} peut etre effectuée normalement, solde initial {Mylist[i].Balance}");
                                     Console.WriteLine($"transaction Id {transaction.Id} - montant {transaction.Montant} est un depot depuis un compte externe a la banque (c.f. environnement) ou en cash ");
 
@@ -57,6 +64,7 @@ namespace Projet_Part_I
                                     x.depot(transaction.Id, transaction.Montant, transaction.Sender, transaction.Receiver, Mylist[i]);
 
                                     Console.WriteLine($"transaction Id {transaction.Id} a été effectuée vers le compte N° {Mylist[i].Number}");
+                                    Console.WriteLine("");
 
                                 }
                             }
@@ -74,6 +82,7 @@ namespace Projet_Part_I
                                     // effectuer le retrait
 
                                     // retrait(int id_trans, int montant, string expediteur, string destinataire, List < BankAccount > aupif, BankAccount c)
+                                    Console.WriteLine("");
                                     Console.WriteLine($"transaction Id {transaction.Id} peut etre effectuée normalement, solde initial {Mylist[i].Balance}");
                                     Console.WriteLine($"transaction Id {transaction.Id} - montant {transaction.Montant} est un retrait vers un compte externe a la banque (c.f. environnement) ou en cash ");
 
@@ -82,7 +91,7 @@ namespace Projet_Part_I
 
                                     //  bool etat = Transactions.retrait();
 
-                                    Console.WriteLine($"transaction Id {transaction.Id} a été effectuée  vers le compte N° {Mylist[i].Number}");
+                                    Console.WriteLine($"transaction Id {transaction.Id} a été effectuée a partir du compte N° {Mylist[i].Number}");
                                     Console.WriteLine("");
                                 }
                                 //return i;
@@ -147,7 +156,8 @@ namespace Projet_Part_I
             // Transactions x = new Transactions(" ",0," "," ");  probablement inutile
             
         }
-
+            //-----------------------------------------------------------------------------//
+            // fin de traitement sur les transactions
         
 
 
