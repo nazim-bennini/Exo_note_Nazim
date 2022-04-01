@@ -83,19 +83,21 @@ namespace Projet_Part_I
 
         // LA SUITE A DEPLACER AILLEURS
 
-        public bool retrait(int id_trans, int montant, string expediteur, string destinataire, List<BankAccount> aupif, BankAccount c)
+        public bool retrait(string id_trans, float montant, string expediteur, string destinataire, BankAccount c)      // public bool retrait(int id_trans, float montant, string expediteur, string destinataire, List<BankAccount> log, BankAccount c)
         {
             double amount = montant;
             bool status = false;                                            // statut par defaut
 
-            c.Balance = c.Balance + montant;
+            c.Balance = c.Balance - montant;
 
-            foreach (BankAccount item in aupif)
-            {
-                Console.WriteLine($" {item.Number} {item.Balance}");
-            }
+            Console.WriteLine($" {c.Number} {c.Balance}");
 
-                status = true;
+            // foreach (BankAccount item in log)
+            //{
+            //   Console.WriteLine($" {item.Number} {item.Balance}");
+            //}
+
+            status = true;
                 return status;
                
             /*else
@@ -106,72 +108,84 @@ namespace Projet_Part_I
             }*/
         }
 
-        
-                                                                                                    /*
-              // Obsolete                                                                                          public bool retrait(int id_trans, int montant, string expediteur, string destinataire)
-                                                                                                            {
-                                                                                                                double amount = montant;
-                                                                                                                bool status = false;                                            // statut par defaut
+        public bool depot(string id_trans, float montant, string expediteur, string destinataire, BankAccount c)
+        {
+            double amount = montant;
+            bool status = false;
 
-                                                                                                                if (solde >= montant && MaxRetrait <= 1000)                     // solde(expediteur)
-                                                                                                                {
+            c.Balance = c.Balance + montant;
+            Console.WriteLine($" {c.Number} {c.Balance}");
 
-                                                                                                                   status = true;
-                                                                                                                   return status;
-                                                                                                                }
-                                                                                                                else
-                                                                                                                {
-                                                                                                                    throw new Exception("virement impossible, car limite depassé");
+            status = true;
+            return status;
 
-                                                                                                                    return status;
-                                                                                                                }
-                                                                                                            }
-                                                                                                    */
+        }
 
-                                                /*
-                                               public bool depot(id_trans, montant, expediteur, destinataire)
-                                               {
-                                                        double amount = montant;
-                                               }
+        /*
+// Obsolete                                                                                          public bool retrait(int id_trans, int montant, string expediteur, string destinataire)
+                {
+                    double amount = montant;
+                    bool status = false;                                            // statut par defaut
 
-                                               public bool virement(id_trans, montant, expediteur, destinataire)
-                                               {
-                                                        string chemin =
-                                                        List<BankAccount> nomVariable = BankAccount.ReadAccounts(chemin);
+                    if (solde >= montant && MaxRetrait <= 1000)                     // solde(expediteur)
+                    {
 
-                                                        double amount = montant;
-                                                        bool status = false;                                             // statut par defaut
+                       status = true;
+                       return status;
+                    }
+                    else
+                    {
+                        throw new Exception("virement impossible, car limite depassé");
 
-                                                        if (MaxRetrait <= 1000)
-                                                        {
-                                                            status = true;
-                                                            return status;
-                                                        }
-                                                        else
-                                                        {
-                                                            throw new Exception("virement impossible, car limite depassé");
+                        return status;
+                    }
+                }
+        */
 
-                                                            return status;
-                                                        }
-                                               }
+        /*
+       public bool depot(id_trans, montant, expediteur, destinataire)
+       {
+                double amount = montant;
+       }
 
-                                               public bool prelevement(id_trans, montant, expediteur, destinataire)
-                                               {
-                                                        double amount = montant;
-                                                        bool status = false;    // statut par defaut
+       public bool virement(id_trans, montant, expediteur, destinataire)
+       {
+                string chemin =
+                List<BankAccount> nomVariable = BankAccount.ReadAccounts(chemin);
 
-                                                        if (virement(id_trans, montant, expediteur, destinataire))
-                                                        {
-                                                            Console.WriteLine($"prelevement autorisé du compte {expediteur} vers le compte {destinataire}");
-                                                            status = true;
-                                                        }
-                                                        else
-                                                        {
-                                                            Console.WriteLine($"prelevement autorisé du compte {expediteur} vers le compte {destinataire}");            // throw new Exception("prelevement impossible, car virement a partir du compte non-autorisé");
-                                                        }
-                                                        return status;
-                                               }   */
-           
+                double amount = montant;
+                bool status = false;                                             // statut par defaut
+
+                if (MaxRetrait <= 1000)
+                {
+                    status = true;
+                    return status;
+                }
+                else
+                {
+                    throw new Exception("virement impossible, car limite depassé");
+
+                    return status;
+                }
+       }
+
+       public bool prelevement(id_trans, montant, expediteur, destinataire)
+       {
+                double amount = montant;
+                bool status = false;    // statut par defaut
+
+                if (virement(id_trans, montant, expediteur, destinataire))
+                {
+                    Console.WriteLine($"prelevement autorisé du compte {expediteur} vers le compte {destinataire}");
+                    status = true;
+                }
+                else
+                {
+                    Console.WriteLine($"prelevement autorisé du compte {expediteur} vers le compte {destinataire}");            // throw new Exception("prelevement impossible, car virement a partir du compte non-autorisé");
+                }
+                return status;
+       }   */
+
     }
 }
 

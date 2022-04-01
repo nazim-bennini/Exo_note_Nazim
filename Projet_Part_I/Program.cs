@@ -16,6 +16,7 @@ namespace Projet_Part_I
             string trxnPath = path + @"\Transactions_1.txt";
             string sttsPath = path + @"\Statut_1.txt";
 
+
             // visualisation de mes data de comptes
             List<BankAccount> Mylist = BankAccount.ReadAccounts(acctPath);
 
@@ -41,11 +42,28 @@ namespace Projet_Part_I
                 if (transaction.Sender != transaction.Receiver)
 
                 {
-                    if (transaction.Sender == "0" && transaction.Receiver != "0")       // depot depuis environnement
+                    if (transaction.Sender == "0" && transaction.Receiver != "0")       // DEPOT depuis environnement
                     {
-                        Console.WriteLine($"{transaction.Id} - montant {transaction.Montant} est un depot depuis un compte externe a la banque (c.f. environnement) ou en cash ");
+                        if (transaction.Montant > 0)
+                        {
+                            for (int i = 0; i < Mylist.Count; i++)                          // parcours de liste
+                            {
+                                if (Mylist[i].Number == transaction.Receiver)
+                                {
+                                    Console.WriteLine($"transaction Id {transaction.Id} peut etre effectuée normalement, solde initial {Mylist[i].Balance}");
+                                    Console.WriteLine($"transaction Id {transaction.Id} - montant {transaction.Montant} est un depot depuis un compte externe a la banque (c.f. environnement) ou en cash ");
+
+                                    Transactions x = new Transactions(transaction.Id, transaction.Montant, transaction.Sender, transaction.Receiver);
+                                    x.depot(transaction.Id, transaction.Montant, transaction.Sender, transaction.Receiver, Mylist[i]);
+
+                                    Console.WriteLine($"transaction Id {transaction.Id} a été effectuée vers le compte N° {Mylist[i].Number}");
+
+                                }
+                            }
+                        }
                     }
-                    if (transaction.Sender != "0" && transaction.Receiver == "0")       // retrait vers environnement sous condition de solde
+
+                    if (transaction.Sender != "0" && transaction.Receiver == "0")       // RETRAIT vers environnement sous condition de solde
                     {
                         for (int i = 0; i < Mylist.Count; i++)                          // parcours de liste
                         {
@@ -55,24 +73,36 @@ namespace Projet_Part_I
                                 {
                                     // effectuer le retrait
 
-                                    //bool etat = Transactions.retrait();
+                                    // retrait(int id_trans, int montant, string expediteur, string destinataire, List < BankAccount > aupif, BankAccount c)
+                                    Console.WriteLine($"transaction Id {transaction.Id} peut etre effectuée normalement, solde initial {Mylist[i].Balance}");
+                                    Console.WriteLine($"transaction Id {transaction.Id} - montant {transaction.Montant} est un retrait vers un compte externe a la banque (c.f. environnement) ou en cash ");
 
-                                    Console.WriteLine($"transaction {transaction.Id} peut etre effectuée normalement ");
+                                    Transactions x = new Transactions(transaction.Id, transaction.Montant , transaction.Sender, transaction.Receiver);
+                                    x.retrait(transaction.Id, transaction.Montant, transaction.Sender, transaction.Receiver, Mylist[i]);
+
+                                    //  bool etat = Transactions.retrait();
+
+                                    Console.WriteLine($"transaction Id {transaction.Id} a été effectuée  vers le compte N° {Mylist[i].Number}");
+                                    Console.WriteLine("");
                                 }
                                 //return i;
                             }
                         }
-
                             //(BankAccount.(transaction.Sender)  > Transactions.montant && Transactions.montant < Transactions.maxretrait)                     // je veux acceder au solde de mon compte Sender
                             //Transactions.retrait;
                         //Console.WriteLine($"{transaction.Id} - montant {transaction.Montant} est un retrait vers un compte externe a la banque (c.f. environnement) ou en cash");
                     }
 
+                    if (transaction.Sender != "0" && transaction.Receiver != "0")      // virement prelevement
+                    { 
+
+                    }
+
                 }
             }
 
-            Transactions x = new Transactions("",10,"","");
-            x.retrait(1, 0, "", "", Mylist, );
+            // draft Transactions x = new Transactions("",10,"","");
+            // draft x.retrait(1, 0, "", "", Mylist, );
 
 
                 /*
