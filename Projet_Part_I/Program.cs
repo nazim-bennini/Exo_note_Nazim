@@ -72,6 +72,7 @@ namespace Projet_Part_I
                             }
                         }
                     }
+
                     /******************************/
                     // RETRAIT vers environnement sous condition de solde
                     if (transaction.Sender != "0" && transaction.Receiver == "0")       
@@ -105,6 +106,7 @@ namespace Projet_Part_I
                             //Transactions.retrait;
                         //Console.WriteLine($"{transaction.Id} - montant {transaction.Montant} est un retrait vers un compte externe a la banque (c.f. environnement) ou en cash");
                     }
+
                     /******************************/
                     // VIREMENT vers un compte de la banque
                     if (transaction.Sender != "0" && transaction.Receiver != "0")
@@ -121,7 +123,7 @@ namespace Projet_Part_I
 
                                         // retrait(int id_trans, int montant, string expediteur, string destinataire, List < BankAccount > aupif, BankAccount c)
                                         Console.WriteLine("");
-                                        Console.WriteLine($"transaction Id {transaction.Id} peut etre effectuée normalement, solde initial {Mylist[i].Balance}");
+                                        Console.WriteLine($"transaction Id {transaction.Id} virement peut etre effectuée normalement, solde initial emetteur{Mylist[i].Balance}");
                                         Console.WriteLine($"transaction Id {transaction.Id} - montant {transaction.Montant} est un virement a un compte bancaire de la banque");
 
                                         Transactions x = new Transactions(transaction.Id, transaction.Montant, transaction.Sender, transaction.Receiver);
@@ -131,6 +133,10 @@ namespace Projet_Part_I
 
                                         Console.WriteLine($"transaction Id {transaction.Id} a été effectuée a partir du compte N° {Mylist[i].Number}");
                                         Console.WriteLine("");
+                                    }
+                                    else 
+                                    {
+                                        Console.WriteLine($"transaction Id {transaction.Id} a été effectuée a partir du compte N° {Mylist[i].Number}");
                                     }
                                     //return i;
                                 }
