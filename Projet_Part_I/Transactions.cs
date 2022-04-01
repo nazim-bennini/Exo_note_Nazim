@@ -31,7 +31,7 @@ namespace Projet_Part_I
             Sender = sender;
             Receiver = receiver;
             id_trans = 0;                       // initialiser par defaut a zero
-            // MaxRetrait = maxRetrait;
+            MaxRetrait = 1000;
         }
 
         public static List<Transactions> ReadTransactions(string trxnPath)          // pas de (string path)
@@ -119,6 +119,27 @@ namespace Projet_Part_I
             status = true;
             return status;
 
+        }
+
+        public bool virement(string id_trans, float montant, string expediteur, string destinataire, BankAccount c)
+        {
+            
+            // List < BankAccount > nomVariable = BankAccount.ReadAccounts(chemin);   ici a titre indicatif
+
+            double amount = montant;
+            bool status = false;                                             // statut par defaut
+
+            if (MaxRetrait <= 1000)
+            {
+                status = true;
+                return status;
+            }
+            else
+            {
+                throw new Exception("virement impossible, car limite depassé");
+
+                return status;
+            }
         }
 
         /*
